@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <nav class="navbar">
+    <h2 class="logo">MyPortfolio</h2>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section>
+    <h2>Contact Me</h2>
+
+    <form id="contactForm">
+      <label>Name:</label>
+      <input type="text" id="name">
+
+      <label>Email:</label>
+      <input type="email" id="email">
+
+      <label>Message:</label>
+      <textarea id="message"></textarea>
+
+      <button type="submit">Send</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 Vanisha</p>
+</footer>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  if (!name || !email || !message) {
+    alert("All fields are required!");
+    return;
+  }
+
+  localStorage.setItem("contactName", name);
+  alert("Message submitted successfully!");
+  this.reset();
+});
+</script>
+
+</body>
+</html>
