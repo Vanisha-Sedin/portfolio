@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Projects</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <nav class="navbar">
+    <h2 class="logo">MyPortfolio</h2>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section>
+    <h2>My Projects (Fetched from API)</h2>
+    <div id="projects" class="grid"></div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 Vanisha</p>
+</footer>
+
+<script>
+/* Fetch data from public API */
+fetch("https://jsonplaceholder.typicode.com/posts?_limit=6")
+  .then(response => response.json())
+  .then(data => {
+    const container = document.getElementById("projects");
+    data.forEach(post => {
+      const card = document.createElement("article");
+      card.className = "card";
+      card.innerHTML = `
+        <h3>${post.title}</h3>
+        <p>${post.body}</p>
+      `;
+      container.appendChild(card);
+    });
+  })
+  .catch(err => console.error(err));
+</script>
+
+</body>
+</html>
